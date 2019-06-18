@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'dva';
 import styles from './MyPage.css'
-import { List } from 'antd-mobile';
+import { List, Button } from 'antd-mobile';
 import TellMeModal from './TellMeModal'
 import AvatarModal from './AvatarModal'
 import { routerRedux } from 'dva/router'
@@ -13,6 +13,28 @@ class MyPage extends React.Component {
             visibleTellMe: false,
             visibleAvatar: false,
             avatarUrl: 'http://localhost:5000/avatars/8DB1CA7756E2350A9BC8040B43699A52.jpg'
+        }
+        // console.log(this)
+
+
+        //测试初始化数据种子
+        if (this.props.userModel.realname === '') {
+            this.props.dispatch({
+                type: 'userModel/setRealname',
+                payload: 'Kalearn'
+            });
+        }
+        if (this.props.userModel.telephone === '') {
+            this.props.dispatch({
+                type: 'userModel/setTelephone',
+                payload: '130-0000-0000'
+            });
+        }
+        if (this.props.userModel.photo === '') {
+            this.props.dispatch({
+                type: 'userModel/setPhoto',
+                payload: 'http://localhost:5000/avatars/8DB1CA7756E2350A9BC8040B43699A52.jpg'
+            });
         }
     }
     onCancelTellMe = () => {
@@ -30,7 +52,7 @@ class MyPage extends React.Component {
             <div className={styles.my}>
                 <div className={styles.main}>
                     <div className={styles.avatar} >
-                        <img src={this.state.avatarUrl} className={styles.img} onClick={this.onOpenAvatar.bind(this)} alt="个人头像" />
+                        <img src={this.props.userModel.photo} className={styles.img} onClick={this.onOpenAvatar.bind(this)} alt="个人头像" />
                     </div>
                     <div className={styles.hello}><i>你好,150****5999</i></div>
                     <div className={styles.money}>
@@ -45,7 +67,8 @@ class MyPage extends React.Component {
                         <div className={styles.right}>
                             <div className={styles.rightBody}>
                                 充值
-                        </div>
+                            </div>
+                            <Button></Button>
                         </div>
                     </div>
                 </div>
@@ -86,4 +109,4 @@ class MyPage extends React.Component {
 
 }
 
-export default connect()(MyPage);
+export default connect(({ userModel }) => ({ userModel }))(MyPage);

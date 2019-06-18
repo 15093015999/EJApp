@@ -11,14 +11,18 @@ class AvatarModal extends React.Component {
         }
         this.upload_props = {
             name: 'formCollection',
-            action: 'http://10.84.130.41:5000/api/File/upload',
+            action: 'http://localhost:5000/api/File/upload',
             onChange: (info) => {
                 if (info.file.status === 'done') {
                     let photo = info.file.response;
-                    this.setState({ imgUrl: photo });
+                    // this.setState({ imgUrl: 'http://localhost:5000/avatars/'+photo });
                     // this.props.form.setFieldsValue({
                     //     photo
                     // });
+                    this.props.dispatch({
+                        type: 'userModel/setPhoto',
+                        payload:'http://localhost:5000/avatars/'+photo
+                    });
                 } else if (info.file.status === 'error') {
                     Toast.fail("上传失败")
                 }
@@ -44,7 +48,7 @@ class AvatarModal extends React.Component {
                 footer={[{ text: '确定', onPress: () => { onCancel() } }]}
             >
                 <div>
-                    <img className={styles.img} src={this.state.imgUrl} style={{ width: 100 }} alt="现有头像" />
+                    <img className={styles.img} src={this.props.userModel.photo} style={{ width: 100 }} alt="现有头像" />
                 </div>
                 <Upload {...this.upload_props}>
                     <Button>
@@ -57,4 +61,4 @@ class AvatarModal extends React.Component {
 
 }
 
-export default connect()(AvatarModal);
+export default connect(({ userModel }) => ({ userModel }))(AvatarModal);
