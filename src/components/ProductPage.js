@@ -1,7 +1,8 @@
 import React from 'react';
 // import { connect } from 'dva';
-import styles from './ProductPage.css';
-import { Carousel, WhiteSpace, WingBlank, SearchBar, Badge, Tabs, } from 'antd-mobile';
+// import styles from './ProductPage.css';
+import { Carousel, Grid, } from 'antd-mobile';
+import styles from './ProductPage.css'
 
 
 class ProductPage extends React.Component {
@@ -19,13 +20,14 @@ class ProductPage extends React.Component {
             });
         }, 0);
     }
-
     render() {
-        const tabs = [
-            { title: <Badge dot>工具</Badge> },
-            { title: <Badge dot>消耗品</Badge> },
-            { title: <Badge dot>其他</Badge> },
-        ];
+        let datasourse = [
+            { icon: 'https://gw.alipayobjects.com/zos/rmsportal/nywPmnTAvTmLusPxHPSu.png', text: '洗护' },
+            { icon: 'https://gw.alipayobjects.com/zos/rmsportal/nywPmnTAvTmLusPxHPSu.png', text: '保洁' },
+            { icon: 'https://gw.alipayobjects.com/zos/rmsportal/nywPmnTAvTmLusPxHPSu.png', text: '看护' },
+            { icon: 'https://gw.alipayobjects.com/zos/rmsportal/nywPmnTAvTmLusPxHPSu.png', text: '月嫂' },
+            { icon: 'https://gw.alipayobjects.com/zos/rmsportal/nywPmnTAvTmLusPxHPSu.png', text: '其他' },
+        ]
 
         return (
             <div>
@@ -55,36 +57,27 @@ class ProductPage extends React.Component {
                         </a>
                     ))}
                 </Carousel>
-                {/* <h1>产品</h1> */}
-                <WingBlank className={styles.title}>
-                    e&nbsp;&nbsp;洁&nbsp;&nbsp;产&nbsp;&nbsp;品&nbsp;&nbsp;页&nbsp;&nbsp;面
-                </WingBlank>
-                <SearchBar placeholder="输入您要查找的产品" maxLength={8} />
-                <WhiteSpace />
 
-                <div>
-                    <Tabs tabs={tabs}
-                        onChange={(tab, index) => { console.log('onChange', index, tab); }}
-                        onTabClick={(tab, index) => { console.log('onTabClick', index, tab); }}
-                    >
-                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '150px', backgroundColor: '#fff' }}>
-                            没钱买
-                        </div>
-                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '150px', backgroundColor: '#fff' }}>
-                            没人卖
-                        </div>
-                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '150px', backgroundColor: '#fff' }}>
-                            别问
-                        </div>
-                    </Tabs>
+                <Grid data={datasourse} columnNum={3} hasLine={false} />
+
+                <div className={styles.main}>
+                    <div className={styles.one}>
+                        <div className={styles.oneA}></div>
+                        <div className={styles.oneA}></div>
+                        <div className={styles.oneA}></div>
+                    </div>
+                    <div className={styles.two}>
+                        <div className={styles.twoA}></div>
+                        <div className={styles.twoB}></div>
+                    </div>
+                    <div className={styles.three}>
+                        <div className={styles.threeA}></div>
+                        <div className={styles.threeB}></div>
+                    </div>
                 </div>
             </div>
-
         );
-
     }
-
-
 }
 
 export default ProductPage;
