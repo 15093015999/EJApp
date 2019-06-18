@@ -3,24 +3,35 @@ import { connect } from 'dva';
 import styles from './MyPage.css'
 import { List } from 'antd-mobile';
 import TellMeModal from './TellMeModal'
+import AvatarModal from './AvatarModal'
+import { routerRedux } from 'dva/router'
 const Item = List.Item;
 class MyPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            visible:false
+            visibleTellMe: false,
+            visibleAvatar: false,
+            avatarUrl: 'http://localhost:5000/avatars/8DB1CA7756E2350A9BC8040B43699A52.jpg'
         }
     }
-    onCancel=()=>{
-        this.setState({visible:false})
+    onCancelTellMe = () => {
+        this.setState({ visibleTellMe: false })
     }
-
+    onOpenAvatar = () => {
+        this.setState({ visibleAvatar: true })
+    }
+    onCancelAvatar = () => {
+        this.setState({ visibleAvatar: false })
+    }
 
     render() {
         return (
             <div className={styles.my}>
                 <div className={styles.main}>
-                    <img className={styles.avatar} src="http://10.84.130.41:5000/avatars/8DB1CA7756E2350A9BC8040B43699A52.jpg" />
+                    <div className={styles.avatar} >
+                        <img src={this.state.avatarUrl} className={styles.img} onClick={this.onOpenAvatar.bind(this)} alt="个人头像" />
+                    </div>
                     <div className={styles.hello}><i>你好,150****5999</i></div>
                     <div className={styles.money}>
                         <div className={styles.left}>
@@ -42,7 +53,7 @@ class MyPage extends React.Component {
                     <Item
                         thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png"
                         arrow="horizontal"
-                        onClick={() => { }}
+                        onClick={() => { this.props.dispatch(routerRedux.push({ pathname: '/order' })) }}
                         platform="android"
                         multipleLine
                     >
@@ -50,7 +61,7 @@ class MyPage extends React.Component {
                     </Item>
                     <Item
                         thumb="https://zos.alipayobjects.com/rmsportal/UmbJMbWOejVOpxe.png"
-                        onClick={() => {this.setState({visible:true})}}
+                        onClick={() => { this.setState({ visibleTellMe: true }) }}
                         arrow="horizontal"
                         platform="android"
                         multipleLine
@@ -59,8 +70,13 @@ class MyPage extends React.Component {
                     </Item>
                 </List>
                 <TellMeModal
-                    onCancel={this.onCancel}
-                    visible={this.state.visible}
+                    onCancel={this.onCancelTellMe}
+                    visible={this.state.visibleTellMe}
+                />
+                <AvatarModal
+                    onCancel={this.onCancelAvatar}
+                    visible={this.state.visibleAvatar}
+                    avatarUrl={this.state.avatarUrl}
                 />
 
             </div>

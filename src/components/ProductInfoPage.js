@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'dva';
-class AddressPage extends React.Component {
+class ProductInfoPage extends React.Component {
 
 
     render() {
         return (
             <div>
-                <h1>this AddressPage</h1>
+                <h1>this ProductInfoPage</h1>
             </div>
 
         );
@@ -14,4 +14,4 @@ class AddressPage extends React.Component {
 
 }
 
-export default connect()(AddressPage);
+export default connect()(ProductInfoPage);

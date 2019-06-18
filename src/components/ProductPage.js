@@ -1,7 +1,10 @@
 import React from 'react';
-import { connect } from 'dva';
-import { Carousel, Grid } from 'antd-mobile';
-import ProductService from '../services/ProductService'
+// import { connect } from 'dva';
+// import styles from './ProductPage.css';
+import { Carousel, Grid, } from 'antd-mobile';
+import styles from './ProductPage.css'
+
+
 class ProductPage extends React.Component {
 
 
@@ -16,21 +19,24 @@ class ProductPage extends React.Component {
             this.setState({
                 data: ['AiyWuByWklrrUDlFignR', 'TekJlZRVCjLFexlOCuWn', 'IJOtIlfsYdTyaDTRVrLI'],
             });
-        }, 100);
+        }, 0);
     }
-
     render() {
-        const data = Array.from(new Array(6)).map((_val, i) => ({
-            icon: 'http://10.84.130.41:5000/avatars/8DB1CA7756E2350A9BC8040B43699A52.jpg',
-            text: `name${i}`,
-        }));
+        let datasourse = [
+            { icon: 'https://gw.alipayobjects.com/zos/rmsportal/nywPmnTAvTmLusPxHPSu.png', text: '洗护' },
+            { icon: 'https://gw.alipayobjects.com/zos/rmsportal/nywPmnTAvTmLusPxHPSu.png', text: '保洁' },
+            { icon: 'https://gw.alipayobjects.com/zos/rmsportal/nywPmnTAvTmLusPxHPSu.png', text: '看护' },
+            { icon: 'https://gw.alipayobjects.com/zos/rmsportal/nywPmnTAvTmLusPxHPSu.png', text: '月嫂' },
+            { icon: 'https://gw.alipayobjects.com/zos/rmsportal/nywPmnTAvTmLusPxHPSu.png', text: '其他' },
+        ]
+
         return (
             <div>
                 <Carousel
                     autoplay={false}
                     infinite
-                // beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
-                // afterChange={index => console.log('slide to', index)}
+                    beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
+                    afterChange={index => console.log('slide to', index)}
                 // autoplay="true"
                 >
                     {this.state.data.map(val => (
@@ -42,7 +48,7 @@ class ProductPage extends React.Component {
                             <img
                                 src={`https://zos.alipayobjects.com/rmsportal/${val}.png`}
                                 alt=""
-                                style={{ width: '100%', verticalAlign: 'top' }}
+                                style={{ width: '100%', height: '5%', verticalAlign: 'top' }}
                                 onLoad={() => {
                                     // fire window resize event to change height
                                     window.dispatchEvent(new Event('resize'));
@@ -52,12 +58,27 @@ class ProductPage extends React.Component {
                         </a>
                     ))}
                 </Carousel>
-                <Grid data={data} hasLine={false} columnNum={3} />
-            </div>
 
+                <Grid data={datasourse} columnNum={3} hasLine={false} />
+
+                <div className={styles.main}>
+                    <div className={styles.one}>
+                        <div className={styles.oneA}></div>
+                        <div className={styles.oneA}></div>
+                        <div className={styles.oneA}></div>
+                    </div>
+                    <div className={styles.two}>
+                        <div className={styles.twoA}></div>
+                        <div className={styles.twoB}></div>
+                    </div>
+                    <div className={styles.three}>
+                        <div className={styles.threeA}></div>
+                        <div className={styles.threeB}></div>
+                    </div>
+                </div>
+            </div>
         );
     }
-
 }
 
-export default connect()(ProductPage);
+export default ProductPage;
