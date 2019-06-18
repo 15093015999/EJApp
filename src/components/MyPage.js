@@ -54,7 +54,7 @@ class MyPage extends React.Component {
                     <div className={styles.avatar} >
                         <img src={this.props.userModel.photo} className={styles.img} onClick={this.onOpenAvatar.bind(this)} alt="个人头像" />
                     </div>
-                    <div className={styles.hello}><i>你好,150****5999</i></div>
+                    <div className={styles.hello}>你好,{this.props.userModel.realname}!</div>
                     <div className={styles.money}>
                         <div className={styles.left}>
                             <div className={styles.leftTitle}>
@@ -68,7 +68,7 @@ class MyPage extends React.Component {
                             <div className={styles.rightBody}>
                                 充值
                             </div>
-                            <Button></Button>
+                            {/* <Button></Button> */}
                         </div>
                     </div>
                 </div>
