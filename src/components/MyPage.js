@@ -53,7 +53,7 @@ class MyPage extends React.Component {
                     <Item
                         thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png"
                         arrow="horizontal"
-                        onClick={() => { this.props.dispatch(routerRedux.push({ pathname: '/order' })) }}
+                        onClick={() => { this.props.dispatch(routerRedux.push({ pathname: '/address' })) }}
                         platform="android"
                         multipleLine
                     >

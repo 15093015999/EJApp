@@ -6,6 +6,8 @@ import OrderPage from './components/OrderPage'
 import HelpPage from './components/HelpPage'
 import MyPage from './components/MyPage'
 import AddressPage from './components/AddressPage';
+import ProductInfoPage from './components/ProductInfoPage'
+import ProductListPage from './components/ProductListPage'
 function RouterConfig({ history }) {
   return (
     <Router history={history}>
@@ -19,6 +21,8 @@ function RouterConfig({ history }) {
             <Route path="/help" exact component={HelpPage} />
             <Route path="/my" exact component={MyPage} />
             <Route path="/address" exact component={AddressPage} />
+            <Route path="/productInfo" exact component={ProductInfoPage} />
+            <Route path="/productList" exact component={ProductListPage} />
           </Switch>
         </IndexPage>
       </Switch>
