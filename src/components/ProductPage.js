@@ -1,13 +1,17 @@
 import React from 'react';
-// import { connect } from 'dva';
+import { connect } from 'dva';
 // import styles from './ProductPage.css';
 import { Carousel, Grid, } from 'antd-mobile';
 import styles from './ProductPage.css'
+import { Button } from '_antd@3.19.5@antd';
+import { routerRedux } from 'dva/router'
 
 
 class ProductPage extends React.Component {
 
-
+    // constructor(props) {
+    //     super(props)
+    // }
     state = {
         data: ['1', '2', '3'],
         imgHeight: 176,
@@ -32,6 +36,11 @@ class ProductPage extends React.Component {
 
         return (
             <div>
+                <Button onClick={() => {
+                    this.props.dispatch(routerRedux.push({
+                        pathname: '/productList'
+                    }))
+                }}>orderList</Button>
                 <Carousel
                     autoplay={false}
                     infinite
@@ -76,9 +85,10 @@ class ProductPage extends React.Component {
                         <div className={styles.threeB}></div>
                     </div>
                 </div>
+
             </div>
         );
     }
 }
 
-export default ProductPage;
+export default connect()(ProductPage);
