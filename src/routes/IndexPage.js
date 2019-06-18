@@ -8,7 +8,7 @@ class IndexPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedTab: 'blueTab',
+      selectedTab: '',
       hidden: false,
       fullScreen: false,
     };
@@ -26,7 +26,7 @@ class IndexPage extends React.Component {
             <Icon key="0" type="search" style={{ marginRight: '16px' }} />,
             <Icon key="1" type="ellipsis" />,
           ]}
-        >NavBar</NavBar>
+        >{this.props.pathModel.currentPath.split('/')[1]}</NavBar>
         {/* <h1 className={styles.title}>Yay! Welcome to dva!</h1>
         <div className={styles.welcome} />
         <ul className={styles.list}>

@@ -17,7 +17,7 @@ class TellMeModal extends React.Component {
                 footer={[{ text: '我知道了', onPress: () => { onCancel() } }]}
             >
                 <div>
-                    000-000-00000
+                    000-0000-0000
                 </div>
             </Modal>
         );
