@@ -2,14 +2,13 @@ import React from 'react';
 import { connect } from 'dva';
 import styles from './IndexPage.css';
 import {  NavBar, Icon, TabBar } from 'antd-mobile'
-import {Link} from 'dva/router'
-import {withRouter,routerRedux} from 'dva/router'
+import {routerRedux} from 'dva/router'
 
 class IndexPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedTab: 'redTab',
+      selectedTab: '',
       hidden: false,
       fullScreen: false,
     };
@@ -22,12 +21,12 @@ class IndexPage extends React.Component {
         <NavBar
           mode="dark"
           // leftContent="Back"
-          icon={<Icon type="left" />}
+          icon={<Icon type="left" onClick={()=>{window.history.back(-1)}}/>}
           rightContent={[
             <Icon key="0" type="search" style={{ marginRight: '16px' }} />,
             <Icon key="1" type="ellipsis" />,
           ]}
-        >NavBar</NavBar>
+        >{this.props.pathModel.currentPath.split('/')[1]}</NavBar>
         {/* <h1 className={styles.title}>Yay! Welcome to dva!</h1>
         <div className={styles.welcome} />
         <ul className={styles.list}>
@@ -58,14 +57,11 @@ class IndexPage extends React.Component {
             }}
             />
             }
-            selected={this.state.selectedTab === 'blueTab'}
+            selected={this.props.pathModel.currentPath === '/product'}
             badge={1}
             onPress={() => {
               this.props.dispatch(routerRedux.push({
                 pathname: '/product' }))
-              this.setState({
-                selectedTab: 'blueTab',
-              });
             }}
             data-seed="logId"
           >
@@ -73,14 +69,12 @@ class IndexPage extends React.Component {
           </TabBar.Item>
           <TabBar.Item
             icon={
-              <Link to="/order">
                 <div style={{
                   width: '22px',
                   height: '22px',
                   background: 'url(https://gw.alipayobjects.com/zos/rmsportal/BTSsmHkPsQSPTktcXyTV.svg) center center /  21px 21px no-repeat'
                 }}
                 />
-              </Link>
             }
             selectedIcon={
               <div style={{
@@ -93,13 +87,10 @@ class IndexPage extends React.Component {
             title="Order"
             key="Order"
             badge={'new'}
-            selected={this.state.selectedTab === 'redTab'}
+            selected={this.props.pathModel.currentPath === '/order'}
             onPress={() => {
               this.props.dispatch(routerRedux.push({
                 pathname: '/order' }))
-              this.setState({
-                selectedTab: 'redTab',
-              });
             }}
             data-seed="logId1"
           >
@@ -125,13 +116,10 @@ class IndexPage extends React.Component {
             title="Help"
             key="Help"
             dot
-            selected={this.state.selectedTab === 'greenTab'}
+            selected={this.props.pathModel.currentPath === '/help'}
             onPress={() => {
               this.props.dispatch(routerRedux.push({
                 pathname: '/help' }))
-              this.setState({
-                selectedTab: 'greenTab',
-              });
             }}
           >
             {this.props.children}
@@ -141,13 +129,10 @@ class IndexPage extends React.Component {
             selectedIcon={{ uri: 'https://zos.alipayobjects.com/rmsportal/gjpzzcrPMkhfEqgbYvmN.svg' }}
             title="My"
             key="My"
-            selected={this.state.selectedTab === 'yellowTab'}
+            selected={this.props.pathModel.currentPath === '/my'}
             onPress={() => {
               this.props.dispatch(routerRedux.push({
                 pathname: '/my' }))
-              this.setState({
-                selectedTab: 'yellowTab',
-              });
             }}
           >
             {this.props.children}
@@ -163,5 +148,5 @@ class IndexPage extends React.Component {
 IndexPage.propTypes = {
 };
 
-export default withRouter(connect()(IndexPage))
+export default connect(({ pathModel }) => ({ pathModel }))(IndexPage)
 // connect()(IndexPage);

@@ -1,5 +1,7 @@
 import axios from 'axios';
-import { message } from 'antd'
+// import { message } from 'antd'
+import { Toast } from 'antd-mobile';
+
 import qs from 'qs'
 // 1. axios的默认配置
 axios.defaults.baseURL = "http://localhost:7890"
@@ -19,12 +21,12 @@ axios.interceptors.response.use((response) => {
   response.statusText = data.message;
   response.data = data.data;
   if(response.status!==200){
-    message.error(data.message)
+    Toast.fail(data.message)
     return Promise.resolve(response);
   }
   return response;
 }, (error) => {
-  message.error("服务端异常")
+  Toast.fail("服务端异常")
   return Promise.reject(error);
 })
 
