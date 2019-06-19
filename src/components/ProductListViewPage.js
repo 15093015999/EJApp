@@ -1,35 +1,10 @@
 import React from 'react';
-import { ListView } from 'antd-mobile';
+import { ListView, Stepper } from 'antd-mobile';
+import styles from './ProductListViewPage.css';
+import { connect } from 'dva';
 
 
-const data = [
-    {
-        img: 'https://zos.alipayobjects.com/rmsportal/dKbkpPXKfvZzWCM.png',
-        title: 'Meet hotel',
-        des: '不是所有的兼职汪都需要风吹日晒',
-    },
-    {
-        img: 'https://zos.alipayobjects.com/rmsportal/XmwCzSeJiqpkuMB.png',
-        title: 'McDonald\'s invites you',
-        des: '不是所有的兼职汪都需要风吹日晒',
-    },
-    {
-        img: 'https://zos.alipayobjects.com/rmsportal/hfVtzEhPzTUewPm.png',
-        title: 'Eat the week',
-        des: '不是所有的兼职汪都需要风吹日晒',
-    },
-];
-const NUM_ROWS = 20;
 let pageIndex = 0;
-
-function genData(pIndex = 0) {
-    const dataBlob = {};
-    for (let i = 0; i < NUM_ROWS; i++) {
-        const ii = (pIndex * NUM_ROWS) + i;
-        dataBlob[`${ii}`] = `row - ${ii}`;
-    }
-    return dataBlob;
-}
 
 class ProductListViewPage extends React.Component {
     constructor(props) {
@@ -41,34 +16,47 @@ class ProductListViewPage extends React.Component {
         this.state = {
             dataSource,
             isLoading: true,
+            val: 0,
         };
     }
 
     componentDidMount() {
-
-        setTimeout(() => {
-            this.rData = genData();
-            this.setState({
-                dataSource: this.state.dataSource.cloneWithRows(this.rData),
-                isLoading: false,
-            });
-        }, 600);
+        this.rData = this.props.productModel.data;
+        this.setState({
+            dataSource: this.state.dataSource.cloneWithRows(this.rData),
+            isLoading: false,
+        });
     }
 
     onEndReached = (event) => {
-
         if (this.state.isLoading && !this.state.hasMore) {
             return;
         }
-        console.log('reach end', event);
         this.setState({ isLoading: true });
-        setTimeout(() => {
-            this.rData = { ...this.rData, ...genData(++pageIndex) };
-            this.setState({
-                dataSource: this.state.dataSource.cloneWithRows(this.rData),
-                isLoading: false,
-            });
-        }, 1000);
+        this.rData = { ...this.rData, ...this.state.data(++pageIndex) };
+        this.setState({
+            dataSource: this.state.dataSource.cloneWithRows(this.rData),
+            isLoading: false,
+        });
+    }
+
+    onChange = (value, id) => {
+        let data = this.props.productModel.data;
+        let total=0;
+        data.forEach((item) => {
+            if (id === item.id) {
+                item.num = value
+            }
+            total+=item.num*item.price;
+        })
+        this.props.dispatch({
+            type: 'productModel/setData',
+            payload:data
+        });
+        this.props.dispatch({
+            type: 'productModel/setTotal',
+            payload:total
+        });
     }
 
     render() {
@@ -83,27 +71,29 @@ class ProductListViewPage extends React.Component {
                 }}
             />
         );
-        let index = data.length - 1;
+        let index = this.props.productModel.data.length - 1;
         const row = (rowID) => {
             if (index < 0) {
-                index = data.length - 1;
+                index = this.props.productModel.data.length - 1;
             }
-            const obj = data[index--];
+            const obj = this.props.productModel.data[index--];
             return (
-                <div key={rowID} style={{ padding: '0 15px' }}>
-                    <div
-                        style={{
-                            lineHeight: '50px',
-                            color: '#888',
-                            fontSize: 18,
-                            borderBottom: '1px solid #F6F6F6',
-                        }}
-                    >{obj.title}</div>
-                    <div style={{ display: '-webkit-box', padding: '15px 0' }}>
-                        <img style={{ height: '64px', marginRight: '15px' }} src={obj.img} alt="" />
-                        <div style={{ lineHeight: 1 }}>
-                            <div style={{ marginBottom: '8px', fontWeight: 'bold' }}>{obj.des}</div>
-                            <div><span style={{ fontSize: '30px', color: '#FF6E27' }}>{rowID}</span>¥</div>
+                <div key={rowID}>
+                    <div className={styles.item}>
+                        <img className={styles.photo} src={obj.photo} alt="" />
+                        <div className={styles.text}>
+                            <div className={styles.textTitle}>{obj.name}</div>
+                            <div className={styles.textBody}>{obj.description}</div>
+                        </div>
+                        <div>
+                            <Stepper
+                                style={{ width: '100%', minWidth: '100px', marginTop: '40px', right: '0' }}
+                                showNumber
+                                max={99}
+                                min={0}
+                                value={obj.num}
+                                onChange={(value) => { this.onChange(value, obj.id) }}
+                            />
                         </div>
                     </div>
                 </div>
@@ -111,12 +101,9 @@ class ProductListViewPage extends React.Component {
         };
         return (
             <ListView
+                style={{height:'100%'}}
                 ref={el => this.lv = el}
                 dataSource={this.state.dataSource}
-                renderHeader={() => <span>大衣</span>}
-                renderFooter={() => (<div style={{ padding: 30, textAlign: 'center' }}>
-                    {this.state.isLoading ? 'Loading...' : 'Loaded'}
-                </div>)}
                 renderRow={row}
                 renderSeparator={separator}
                 className="am-list"
@@ -131,4 +118,4 @@ class ProductListViewPage extends React.Component {
     }
 }
 
-export default ProductListViewPage;
+export default connect(({ productModel }) => ({ productModel }))(ProductListViewPage);

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'dva';
 import styles from './MyPage.css'
-import { List, Button } from 'antd-mobile';
+import { List } from 'antd-mobile';
 import TellMeModal from './TellMeModal'
 import AvatarModal from './AvatarModal'
 import { routerRedux } from 'dva/router'
@@ -12,28 +12,6 @@ class MyPage extends React.Component {
         this.state = {
             visibleTellMe: false,
             visibleAvatar: false,
-        }
-        // console.log(this)
-
-
-        //测试初始化数据种子
-        if (this.props.userModel.realname === '') {
-            this.props.dispatch({
-                type: 'userModel/setRealname',
-                payload: 'Kalearn'
-            });
-        }
-        if (this.props.userModel.telephone === '') {
-            this.props.dispatch({
-                type: 'userModel/setTelephone',
-                payload: '130-0000-0000'
-            });
-        }
-        if (this.props.userModel.photo === '') {
-            this.props.dispatch({
-                type: 'userModel/setPhoto',
-                payload: 'http://10.84.130.41:5000/avatars/8DB1CA7756E2350A9BC8040B43699A52.jpg'
-            });
         }
     }
     onCancelTellMe = () => {
@@ -51,7 +29,7 @@ class MyPage extends React.Component {
             <div className={styles.my}>
                 <div className={styles.main}>
                     <div className={styles.avatar} >
-                        <img src={this.props.userModel.photo} className={styles.img} onClick={this.onOpenAvatar.bind(this)} alt="个人头像" />
+                        <img src={'http://10.84.130.41:5000/avatars/'+this.props.userModel.photo} className={styles.img} onClick={this.onOpenAvatar.bind(this)} alt="个人头像" />
                     </div>
                     <div className={styles.hello}>你好,{this.props.userModel.realname}!</div>
                     <div className={styles.money}>

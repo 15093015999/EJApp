@@ -2,9 +2,11 @@ import React from 'react';
 // import { connect } from 'dva';
 import { Menu } from 'antd';
 import { Link } from 'dva/router';
-import styles from './ProductListPage.css'
+import styles from './ProductListPage.css';
+import { connect } from 'dva';
 // import ProductListViewPage from './ProductListViewPage';
-// import { ListView } from 'antd-mobile';
+import { Button } from 'antd-mobile';
+import {ProductListViewPage} from './ProductListViewPage';
 
 
 class ProductListPage extends React.Component {
@@ -20,10 +22,10 @@ class ProductListPage extends React.Component {
             <div className={styles.main}>
                 <Menu
                     onClick={this.handleClick}
-                    style={{ width: '20%',height:'100%'}}
+                    style={{ width: '20%', height: '100%' }}
                     defaultSelectedKeys={['1']}
                     defaultOpenKeys={['sub1']}
-                    // mode="inline"
+                // mode="inline"
                 >
                     <Menu.Item key="1">
                         <Link to="/productListView">
@@ -38,6 +40,17 @@ class ProductListPage extends React.Component {
                 </Menu >
                 <div className={styles.right}>
                     {this.props.children}
+                    {/* <ProductListViewPage/> */}
+                </div>
+                <div className={styles.Affix}>
+                    <div className={styles.AffixLeft}>
+                        总额:
+                        <span style={{ color: 'orange' }}>{this.props.productModel.total + '￥'}</span>
+                    </div>
+                    <div className={styles.AffixNull} />
+                    <div className={styles.AffixRight}>
+                        <Button type="ghost" inline style={{ marginRight: '4px' }} className="am-button-borderfix">确认订单</Button>
+                    </div>
                 </div>
             </div>
         );
@@ -45,4 +58,4 @@ class ProductListPage extends React.Component {
 
 }
 
-export default ProductListPage;
+export default connect(({ productModel }) => ({ productModel }))(ProductListPage);

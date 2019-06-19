@@ -4,7 +4,7 @@ import { Toast } from 'antd-mobile';
 
 import qs from 'qs'
 // 1. axios的默认配置
-axios.defaults.baseURL = "http://localhost:7890"
+axios.defaults.baseURL = "http://129.211.75.125:7890"
 axios.defaults.headers["Content-Type"] = "application/x-www-form-urlencoded";
 
 
@@ -15,6 +15,7 @@ axios.interceptors.request.use((config) => {
   }
   return config;
 })
+
 axios.interceptors.response.use((response) => {
   let { data } = response;
   response.status = data.status;

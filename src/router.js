@@ -23,9 +23,12 @@ function RouterConfig({ history }) {
             <Route path="/my" exact component={MyPage} />
             <Route path="/address" exact component={AddressPage} />
             <Route path="/productInfo" exact component={ProductInfoPage} />
-            <Route path="/productList" exact component={ProductListPage} />
+            {/* <Route path="/productList" exact component={ProductListPage} /> */}
             <ProductListPage>
-              <Route path="/productListView" exact component={ProductListViewPage} />
+              <Switch>
+                <Redirect path='productList' exact to="/productListView" />
+                <Route path="/productListView" exact component={ProductListViewPage} />
+              </Switch>
             </ProductListPage>
           </Switch>
         </IndexPage>
