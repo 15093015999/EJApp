@@ -1,12 +1,9 @@
 import React from 'react';
-// import { connect } from 'dva';
 import { Menu } from 'antd';
 import { Link } from 'dva/router';
 import styles from './ProductListPage.css';
 import { connect } from 'dva';
-// import ProductListViewPage from './ProductListViewPage';
 import { Button } from 'antd-mobile';
-import {ProductListViewPage} from './ProductListViewPage';
 
 
 class ProductListPage extends React.Component {

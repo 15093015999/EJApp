@@ -1,8 +1,5 @@
 import React from 'react';
-// import { connect } from 'dva';
-import { Tabs, Badge, ListView,List } from 'antd-mobile'
-const Item = List.Item;
-const Brief = Item.Brief;
+import { Tabs, Badge, ListView } from 'antd-mobile'
 const data = [
     {
       img: 'https://zos.alipayobjects.com/rmsportal/dKbkpPXKfvZzWCM.png',
@@ -61,18 +58,7 @@ class OrderPage extends React.Component {
         }, 600);
       }
     
-      // If you use redux, the data maybe at props, you need use `componentWillReceiveProps`
-      // componentWillReceiveProps(nextProps) {
-      //   if (nextProps.dataSource !== this.props.dataSource) {
-      //     this.setState({
-      //       dataSource: this.state.dataSource.cloneWithRows(nextProps.dataSource),
-      //     });
-      //   }
-      // }
-    
       onEndReached = (event) => {
-        // load new data
-        // hasMore: from backend data, indicates whether it is the last page, here is false
         if (this.state.isLoading && !this.state.hasMore) {
           return;
         }
@@ -139,7 +125,7 @@ class OrderPage extends React.Component {
         return (
             <div>
                 <Tabs tabs={tabs}
-                initialPage={1}
+                initialPage={0}
                 onChange={(tab, index) => { console.log('onChange', index, tab); }}
                 onTabClick={(tab, index) => { console.log('onTabClick', index, tab); }}
                 >

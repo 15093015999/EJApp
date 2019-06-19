@@ -1,17 +1,15 @@
 import React from 'react';
 import { connect } from 'dva';
-// import styles from './ProductPage.css';
 import { Carousel, Grid, } from 'antd-mobile';
 import styles from './ProductPage.css'
-import { Button } from '_antd@3.19.5@antd';
 import { routerRedux } from 'dva/router'
 
 
 class ProductPage extends React.Component {
 
-    constructor(props) {
-        super(props)
-    }
+    // constructor(props) {
+    //     super(props)
+    // }
     state = {
         data: ['1', '2', '3'],
         imgHeight: 176,
