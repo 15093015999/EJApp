@@ -11,7 +11,7 @@ class ProductPage extends React.Component {
     //     super(props)
     // }
     state = {
-        data: ['1', '2', '3'],
+        data: ['jiazheng', 'suiyi', 'yueshao'],
         imgHeight: 176,
     }
     componentDidMount() {

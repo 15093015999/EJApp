@@ -158,22 +158,22 @@ class HelpPage extends React.Component {
                     <span className={`${styles.textblock} `} style={{ display: this.state.textview[0] }}>
                         订单页面有专门人员负责为什么不去订单页面转转呢(๑•̀ㅂ•́)و✧
                     </span>
-                    <spawn className={`${styles.textblock} `} style={{ display: this.state.textview[1] }}>
+                    <span className={`${styles.textblock} `} style={{ display: this.state.textview[1] }}>
                         多玩玩手机就会了，经验之谈︿(￣︶￣)︿
-                    </spawn>
-                    <spawn className={`${styles.textblock} `} style={{ display: this.state.textview[2] }}>
+                    </span>
+                    <span className={`${styles.textblock} `} style={{ display: this.state.textview[2] }}>
                         本店只有涨价没有优惠，还不快来抢购吧（づ￣3￣）づ╭❤～
                         <div>
 
                         </div>
                         至于活动，别问，问就是在做了o(*≧▽≦)ツ┏━┓
-                    </spawn>
-                    <spawn className={`${styles.textblock} `} style={{ display: this.state.textview[3] }}>
+                    </span>
+                    <span className={`${styles.textblock} `} style={{ display: this.state.textview[3] }}>
                         花钱一时爽，一直花钱一直爽，爽就完事了，问嫩么多干嘛(*￣rǒ￣)
-                    </spawn>
-                    <spawn className={`${styles.textblock} `} style={{ display: this.state.textview[4] }}>
+                    </span>
+                    <span className={`${styles.textblock} `} style={{ display: this.state.textview[4] }}>
                         问这个问题之前请具体到人（○｀ 3′○）
-                    </spawn>
+                    </span>
                     </div>
                 </div>
             </div>
