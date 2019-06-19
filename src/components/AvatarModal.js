@@ -21,7 +21,7 @@ class AvatarModal extends React.Component {
                     // });
                     this.props.dispatch({
                         type: 'userModel/setPhoto',
-                        payload:'http://localhost:5000/avatars/'+photo
+                        payload:'http://10.84.130.41:5000/avatars/'+photo
                     });
                 } else if (info.file.status === 'error') {
                     Toast.fail("上传失败")

@@ -12,7 +12,6 @@ class MyPage extends React.Component {
         this.state = {
             visibleTellMe: false,
             visibleAvatar: false,
-            avatarUrl: 'http://localhost:5000/avatars/8DB1CA7756E2350A9BC8040B43699A52.jpg'
         }
         // console.log(this)
 
@@ -33,7 +32,7 @@ class MyPage extends React.Component {
         if (this.props.userModel.photo === '') {
             this.props.dispatch({
                 type: 'userModel/setPhoto',
-                payload: 'http://localhost:5000/avatars/8DB1CA7756E2350A9BC8040B43699A52.jpg'
+                payload: 'http://10.84.130.41:5000/avatars/8DB1CA7756E2350A9BC8040B43699A52.jpg'
             });
         }
     }
