@@ -29,7 +29,7 @@ class MyPage extends React.Component {
             <div className={styles.my}>
                 <div className={styles.main}>
                     <div className={styles.avatar} >
-                        <img src={'http://10.84.130.41:5000/avatars/'+this.props.userModel.photo} className={styles.img} onClick={this.onOpenAvatar.bind(this)} alt="个人头像" />
+                        <img src={'http://47.100.17.233:5000/avatars/'+this.props.userModel.photo} className={styles.img} onClick={this.onOpenAvatar.bind(this)} alt="个人头像" />
                     </div>
                     <div className={styles.hello}>你好,{this.props.userModel.realname}!</div>
                     <div className={styles.money}>

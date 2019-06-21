@@ -12,15 +12,15 @@ class AvatarModal extends React.Component {
         }
         this.upload_props = {
             name: 'formCollection',
-            action: 'http://10.84.130.41:5000/api/File/upload',
+            action: 'http://47.100.17.233:5000/api/File/upload',
             onChange: (info) => {
                 if (info.file.status === 'done') {
                     let photo = info.file.response;
-                    AvatarService.updatePhoto(this.props.userModel.id,this.props.userModel.photo)
                     this.props.dispatch({
                         type: 'userModel/setPhoto',
                         payload:photo
                     });
+                    AvatarService.updatePhoto(this.props.userModel.id,this.props.userModel.photo)
                 } else if (info.file.status === 'error') {
                     Toast.fail("上传失败")
                 }

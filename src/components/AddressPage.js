@@ -103,6 +103,7 @@ class AddressPage extends React.Component {
                 </Card>
 
                 <List renderHeader={() => <h3>添加地址</h3>}>
+
                     <Picker
                         title="选择地区"
                         extra="点击选择地址！"
@@ -122,6 +123,7 @@ class AddressPage extends React.Component {
                         ref={el => this.autoFocusInst = el}
                     >详细地址</InputItem>
                     <Button type="primary" onClick={this.handleAddAddress.bind(this)}>添加地址</Button>
+                    
                 </List>
 
 

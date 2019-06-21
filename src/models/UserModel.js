@@ -4,7 +4,7 @@ export default {
         id: 1,
         realname: '李洋',
         telephone: '130-0000-0000',
-        photo: '8DB1CA7756E2350A9BC8040B43699A52.jpg',
+        photo: '3AB9E9A01020B00A21AD71EE3BC95161.jpg',
         addr: [
             {
                 id:1,

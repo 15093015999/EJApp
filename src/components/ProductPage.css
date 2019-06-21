@@ -21,17 +21,17 @@
 }
 
 .oneA{
-  background: url('http://10.84.130.41:5000/avatars/xiyi.jpg') repeat;
+  background: url('http://47.100.17.233:5000/avatars/tu/xiyi.jpg') repeat;
   background-size:cover;
 }
 
 .oneB{
-  background: url('http://10.84.130.41:5000/avatars/xixie.jpg') repeat;
+  background: url('http://47.100.17.233:5000/avatars/tu/xixie.jpg') repeat;
   background-size:cover;
 }
 
 .oneC{
-  background: url('http://10.84.130.41:5000/avatars/zhouqibaojie.jpg') repeat;
+  background: url('http://47.100.17.233:5000/avatars/tu/zhouqibaojie.jpg') repeat;
   background-size:cover;
 }
 
@@ -45,13 +45,13 @@
 }
 .twoA{
   flex:1;
-  background: url('http://10.84.130.41:5000/avatars/jiadianweixiu.jpg') repeat;
+  background: url('http://47.100.17.233:5000/avatars/tu/jiadianweixiu.jpg') repeat;
   background-size:cover;
 
 }
 .twoB{
   flex:2;
-  background: url('http://10.84.130.41:5000/avatars/jiadianqingxi.jpg') repeat;
+  background: url('http://47.100.17.233:5000/avatars/tu/jiadianqingxi.jpg') repeat;
   background-size:cover;
 
 }
@@ -64,12 +64,12 @@
 }
 .threeA{
   flex:2;
-  background: url('http://10.84.130.41:5000/avatars/jiafangqingxi.jpg') repeat;
+  background: url('http://47.100.17.233:5000/avatars/tu/jiafangqingxi.jpg') repeat;
   background-size:cover;
 }
 .threeB{
   flex:1;
-  background: url('http://10.84.130.41:5000/avatars/xiyouyanji.jpg') repeat;
+  background: url('http://47.100.17.233:5000/avatars/tu/xiyouyanji.jpg') repeat;
   background-size:cover;
 
 }

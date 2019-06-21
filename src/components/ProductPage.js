@@ -32,12 +32,12 @@ class ProductPage extends React.Component {
     }
     render() {
         let datasourse = [
-            { icon: 'http://10.84.130.41:5000/avatars/xihu.png', text: '洗护' },
-            { icon: 'http://10.84.130.41:5000/avatars/baojie.jpg', text: '保洁' },
-            { icon: 'http://10.84.130.41:5000/avatars/kanhu.jpg', text: '看护' },
-            { icon: 'http://10.84.130.41:5000/avatars/yueshao.jpg', text: '月嫂' },
-            { icon: 'http://10.84.130.41:5000/avatars/qita.jpg', text: '其他' },
-            { icon: 'http://10.84.130.41:5000/avatars/jingqingqidai.jpg', text: '敬请期待' }
+            { icon: 'http://47.100.17.233:5000/avatars/tu/xihu.png', text: '洗护' },
+            { icon: 'http://47.100.17.233:5000/avatars/tu/baojie.jpg', text: '保洁' },
+            { icon: 'http://47.100.17.233:5000/avatars/tu/kanhu.jpg', text: '看护' },
+            { icon: 'http://47.100.17.233:5000/avatars/tu/yueshao.jpg', text: '月嫂' },
+            { icon: 'http://47.100.17.233:5000/avatars/tu/qita.jpg', text: '其他' },
+            { icon: 'http://47.100.17.233:5000/avatars/tu/jingqingqidai.jpg', text: '敬请期待' }
         ]
 
         return (
@@ -55,7 +55,7 @@ class ProductPage extends React.Component {
                             style={{ display: 'inline-block', width: '100%', height: this.state.imgHeight }}
                         >
                             <img
-                                src={`http://10.84.130.41:5000/avatars/${val}.png`}
+                                src={`http://47.100.17.233:5000/avatars/tu/${val}.png`}
                                 alt=""
                                 style={{ width: '100%', verticalAlign: 'top' }}
                                 onLoad={() => {

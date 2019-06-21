@@ -58,7 +58,7 @@ class IndexPage extends React.Component {
             />
             }
             selected={this.props.pathModel.currentPath === '/product'}
-            badge={1}
+            // badge={1}
             onPress={() => {
               this.props.dispatch(routerRedux.push({
                 pathname: '/product' }))
@@ -86,7 +86,7 @@ class IndexPage extends React.Component {
             }
             title="Order"
             key="Order"
-            badge={'new'}
+            // badge={'new'}
             selected={this.props.pathModel.currentPath === '/order'}
             onPress={() => {
               this.props.dispatch(routerRedux.push({
@@ -115,7 +115,7 @@ class IndexPage extends React.Component {
             }
             title="Help"
             key="Help"
-            dot
+            // dot
             selected={this.props.pathModel.currentPath === '/help'}
             onPress={() => {
               this.props.dispatch(routerRedux.push({
